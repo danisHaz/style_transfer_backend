@@ -4,3 +4,12 @@ success_template = '{{"error": null, "response": "{}", "data": {}}}'
 user_template = '{{"username": "{}", "email": "{}", "password": "{}", "auth_token": "{}"}}'
 
 token_length = 16
+
+error_codes = {\
+    16: 'Wrong query to database',
+    17: 'Invalid data passed to body',
+    18: 'User is already registered',
+    19: 'User is not registered',
+    20: 'User is already logged in',
+    21: 'Provided username does not exist'
+}

@@ -3,5 +3,5 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     CSRF_ENABLED = True
-    # Remember you @Pomah3: https://github.com/pomah3
+    # Connected with @Pomah3: https://github.com/pomah3
     SECRET_KEY = 'you-will-never-guess'
