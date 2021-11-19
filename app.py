@@ -28,8 +28,8 @@ def registerNewUser(name):
 			password_hashed=json_body['passsword_hashed'],\
 			auth_token=None)
 		if not User.contains_user_by_name(new_user.username):
-			User.session.add(new_user)
-			User.session.commit()
+			my_db.session.add(new_user)
+			my_db.session.commit()
 			return success_template.format('Registration successful', 'null')
 
 		return error_template.format(18)
@@ -43,27 +43,29 @@ def loginUser(name):
 		return error_template.format(16)
 
 	if not User.contains_user_by_name(name):
-		print(name)
 		return error_template.format(19)
 
 	try:
 		client = json.loads(request.get_data())
-		print(client)
 		new_token = str(create_token())
+		print(client)
 		m_user = User.query.filter_by(username=name).first()
-		if m_user.equals(client):
+		if m_user.equals(client) and m_user.auth_token is not None:
 			return error_template.format(20)
-		
+
 		m_user.auth_token = new_token
 		my_db.session.commit()
-		return success_template.format(\
-			'Successful logging in',\
-			user_template.format(\
+		json_template = user_template.format(\
 				m_user.username,\
 				m_user.username,\
 				m_user.password_hashed,\
 				m_user.auth_token\
 			)\
+
+		print(json_template)
+		return success_template.format(\
+			'Successful logging in',\
+			json_template
 		)
 	except:
 		return error_template.format(17)

@@ -15,16 +15,17 @@ class User(my_db.Model):
 
 	def __repr__(self) -> str :
 		return f'{{"id": {self.id}, "username": "{self.username}", ' +\
-			'"email": "{self.email}", "password_hashed": "{self.password_hashed}"}}'
+			'"email": "{self.email}", "password": "{self.password_hashed}"}}'
 	
 	@staticmethod
 	def contains_user_by_name(current_username: str) -> bool:
 		if User.query.filter_by(username=current_username).first() is None:
 			return False
+		return True
 	
 	# cannot perform equality check by id because client doesn't have id of user
 	def equals(self, user) -> bool:
-		return (self.username == user.username)
+		return (self.username == user['username'])
 
 class Data(my_db.Model):
 	__tablename__ = 'data'
