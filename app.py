@@ -22,10 +22,11 @@ def registerNewUser(name):
 
 	try:
 		json_body = json.loads(request.get_data())
+		print(json_body)
 		new_user = User(\
 			username=json_body['username'],\
 			email=json_body['email'],\
-			password_hashed=json_body['passsword_hashed'],\
+			password_hashed=json_body['password'],\
 			auth_token=None)
 		if not User.contains_user_by_name(new_user.username):
 			my_db.session.add(new_user)
