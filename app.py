@@ -2,14 +2,14 @@ from logging import error
 from consts import *
 from flask import request
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask_mysqldb import MySQL
 from config import Config
 from consts import error_template, success_template, user_template
 import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
-my_db = SQLAlchemy(app)
+my_db = MySQL(app)
 
 from models.models import User, Data, create_token
 
@@ -71,7 +71,7 @@ def loginUser(name):
 	except:
 		return error_template.format(17)
 
-@app.route('/register/<name>', methods=['POST'])
+@app.route('/logout/<name>', methods=['POST'])
 def logoutUser(name):
 	if request.method != 'POST':
 		return error_template.format(16)

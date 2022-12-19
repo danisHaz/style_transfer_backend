@@ -1,4 +1,3 @@
-from enum import unique
 from app import my_db
 import os
 import binascii
