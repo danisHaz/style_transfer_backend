@@ -1,5 +1,5 @@
 class Config:
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////home/juvenal/github_projects/style_transfer_backend/dbs/test.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://admin:danchik112345@localhost:3306/aviasales'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     CSRF_ENABLED = True
