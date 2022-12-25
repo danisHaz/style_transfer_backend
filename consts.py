@@ -2,7 +2,10 @@ class Templates:
     main_template = '{{"page_index": "{}"}}'
     error_template = '{{"error": "{}", "response": null, "data": null}}'
     success_template = '{{"error": null, "response": "{}", "data": {}}}'
-    user_template = '{{"phone_number": "", "email": "{}", "signedIn": "{}"}}'
+    user_template = '{{"clientId": "{}", "phone_number": "", "email": "{}", "signedIn": "{}"}}'
+    takeoff_template = '{{"timetable_id": {}, "city_name_from": "{}", "city_name_to": "{}", "time_from": "{}", "time_to": "{}"}}'
+    buy_ticket_template = '{{"timeFrom": "{}", "timeTo": "{}", "cityCodeFrom": {}, "cityCodeTo": {},\
+        "seatNumberId": {}, "price": {}, "extraLuggageAmount": {}, "planeFactoryId": {}, "cityNameFrom": "{}", "cityNameTo": "{}"}}'
 
 token_length = 16
 
